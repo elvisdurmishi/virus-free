@@ -1,0 +1,13 @@
+.iconColor,
+.iconColor::before {
+  background: -webkit-gradient(
+    linear,
+    right bottom,
+    right top,
+    from(#65dfc9),
+    to(#6cdbeb)
+  );
+  margin-top: 20px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

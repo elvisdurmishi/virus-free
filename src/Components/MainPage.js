@@ -1,5 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../App.css';
 
 function MainPage() {
   return (
@@ -16,14 +17,14 @@ function MainPage() {
               <input className="input-box" type="text" />
               <a href="www.google.com">
                 <FontAwesomeIcon
-                  className="fas, search-icon"
+                  className="fas search-icon"
                   icon="search"
                 ></FontAwesomeIcon>
                 <i className="fas search-icon fa-search"></i>
               </a>
             </div>
             <p>
-              Analyze suspicious files and URLs to detect types of malware,
+              Analyze suspicious files and URLs to detect types of malware
               automatically share them with the security community
             </p>
           </div>
