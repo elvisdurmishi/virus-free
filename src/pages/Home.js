@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../App.css';
 
-function MainPage() {
+function Home() {
   return (
     <div>
       <div className="status">
@@ -34,4 +34,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default Home;
