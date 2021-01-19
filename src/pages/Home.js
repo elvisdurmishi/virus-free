@@ -7,7 +7,6 @@ function Home() {
     <div>
       <div className="status">
         <h1>Url Scan</h1>
-        {/* <!-- <input type="text" /> --> */}
       </div>
       <div className="cards">
         <div className="card">
@@ -24,8 +23,8 @@ function Home() {
               </a>
             </div>
             <p>
-              Analyze suspicious files and URLs to detect types of malware
-              automatically share them with the security community
+              Analyze suspicious URLs to detect types of malware automatically
+              share them with the security community
             </p>
           </div>
         </div>

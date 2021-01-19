@@ -22,6 +22,7 @@ function App() {
         <div className="games">
           <Router>
             <Switch>
+              <Route path="/" exact component={Home} />
               <Route path="/home" exact component={Home} />
               <Route path="/file" component={File} />
               <Route path="/pricing" component={Pricing} />
