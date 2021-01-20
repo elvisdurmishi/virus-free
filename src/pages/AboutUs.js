@@ -12,8 +12,9 @@ function AboutUs() {
           <div className="card-info">
             <h2 className="card-title">Edmond Allaraj</h2>
             <p>
-              Hello I'm Edmond Allaraj. <br></br>(╭☞ ͡° ͜ʖ ͡° )╭☞
-              ｄｏｎｔ　ｔａｌｋｉｎｇ　ｐｌｅａｓｅ (╭☞ ͡° ͜ʖ ͡° )╭☞
+              Hello I'm Edmond Allaraj. I am a student from Albania. Studying
+              for Economics Informatics in "Fakulteti Ekonomik, Universiteti i
+              Tiranes"
             </p>
           </div>
         </div>
@@ -21,8 +22,9 @@ function AboutUs() {
           <div className="card-info">
             <h2 className="card-title">Elvis Durmishi</h2>
             <p>
-              Hello I'm Elvis Durmishi. <br></br>(╭☞ ͡° ͜ʖ ͡° )╭☞
-              ｄｏｎｔ　ｔａｌｋｉｎｇ　ｐｌｅａｓｅ (╭☞ ͡° ͜ʖ ͡° )╭☞
+              Hello I'm Elvis Durmishi. I am a student from Albania. Studying
+              for Economics Informatics in "Fakulteti Ekonomik, Universiteti i
+              Tiranes"
             </p>
           </div>
         </div>
@@ -30,8 +32,9 @@ function AboutUs() {
           <div className="card-info">
             <h2 className="card-title">Henri Naqe</h2>
             <p>
-              Hello I'm Henri Naqe. <br></br>(╭☞ ͡° ͜ʖ ͡° )╭☞
-              ｄｏｎｔ　ｔａｌｋｉｎｇ　ｐｌｅａｓｅ (╭☞ ͡° ͜ʖ ͡° )╭☞
+              Hello I'm Henri Naqe. I am a student from Albania. Studying for
+              Economics Informatics in "Fakulteti Ekonomik, Universiteti i
+              Tiranes"
             </p>
           </div>
         </div>
