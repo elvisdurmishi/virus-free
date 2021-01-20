@@ -41,7 +41,7 @@ function Sidebar() {
                 }}
                 className="pro"
               >
-                <h2 classNam="small-title"> {val.description}</h2>
+                <h2 className="small-title"> {val.description}</h2>
                 <div>{val.icon}</div>
               </div>
             </div>

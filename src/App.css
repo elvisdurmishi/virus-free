@@ -196,10 +196,31 @@ input {
 }
 
 .games {
-  margin: 5rem;
+  margin: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  overflow: auto;
+  max-height: 100%;
+}
+
+.games::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.games::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.games::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.games::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .cards-about {
@@ -263,9 +284,9 @@ input {
 }
 
 .small-title {
-  font-size: 1.1rem;
-  padding: 20px;
-  margin-left: 20px;
+  font-size: 1.2rem;
+  padding: 5px;
+  text-align: center;
 }
 
 .sign-up-icon {
