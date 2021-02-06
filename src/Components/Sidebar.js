@@ -15,9 +15,8 @@ function Sidebar() {
       <div className="links">
         {SidebarData.map((val, key) => {
           return (
-            <div className="link ">
+            <div key={key} className="link ">
               <div
-                key={key}
                 onClick={() => {
                   window.location.pathname = val.link;
                 }}
@@ -33,9 +32,8 @@ function Sidebar() {
       <div className="footer">
         {SidebarFooter.map((val, key) => {
           return (
-            <div>
+            <div key={key}>
               <div
-                key={key}
                 onClick={() => {
                   window.location.pathname = val.link;
                 }}
