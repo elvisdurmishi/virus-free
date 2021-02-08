@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
-// import { useState } from 'react';
 import {
   FaSearch,
   FaRegCheckCircle,
   FaRegQuestionCircle,
 } from 'react-icons/fa';
+import ProgressBar from './progress/ProgressBar';
 import '../App.css';
 
 export default class Home extends Component {
@@ -78,18 +77,20 @@ export default class Home extends Component {
             <div className="empty-display"></div>
           ) : (
             [
-              <div key={1} className="green-circle">
-                <div className="white-circle">
-                  <span className="big-green-text">{this.state.malicious}</span>
-                  <span>/{this.state.harmless}</span>
-                </div>
-              </div>,
+              <ProgressBar
+                key={12214124124}
+                malicious={this.state.malicious}
+                scans={this.state.harmless}
+                size={100}
+                strokeWidth={10}
+                circleTwoStroke="red"
+              />,
             ]
           )}
         </div>
         <div className="cards">
           <div className="card">
-            <div className="card-info">
+            <div className="card-info file-info-card">
               <h2>Url Scan</h2>
               <div className="input-container">
                 <input

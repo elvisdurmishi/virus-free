@@ -1,4 +1,6 @@
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -171,7 +173,6 @@ main {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
 }
 
 .green-circle {
@@ -247,25 +248,6 @@ input {
   max-height: 100%;
 }
 
-.games::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-.games::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-.games::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-.games::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
 .cards-about {
   display: flex;
   flex-direction: row;
@@ -301,6 +283,12 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.file-info-card {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .card-info-login {
@@ -341,11 +329,16 @@ input {
 }
 
 .input-container {
+  height: 100px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   position: relative;
+}
+
+.column {
+  flex-direction: column;
 }
 
 .input-box {
@@ -415,6 +408,7 @@ table {
   display: block;
   width: 530px;
   border-collapse: collapse;
+  text-align: left;
 }
 
 tbody {
@@ -457,4 +451,50 @@ table::-webkit-scrollbar-track {
 
 .small-height {
   height: 100px;
+}
+
+.file-label {
+  color: #0275d8;
+}
+
+.file {
+  visibility: hidden;
+  width: 100px;
+}
+
+.file-label::before {
+  content: 'Choose File';
+  display: block;
+  background-color: #fff;
+  border: 2px solid #0275d8;
+  border-radius: 5px;
+  padding: 10px 20px;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+  width: 150px;
+}
+
+.file-label:hover::before,
+.file-label:active::before {
+  border-color: #034a88;
+}
+
+.file-btn {
+  background-color: #0275d8;
+  color: #fff;
+  width: 70px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.file-btn:hover,
+.file-btn:active {
+  background-color: #fff;
+  color: #0275d8;
+  border: 1px solid #0275d8;
 }

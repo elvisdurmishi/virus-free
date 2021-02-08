@@ -5,12 +5,6 @@ import {
   FaAddressCard,
   FaSignInAlt,
 } from 'react-icons/fa';
-import { ImPriceTag } from 'react-icons/im';
-// import LinkIcon from '@material-ui/icons/Link';
-// import AttachFileIcon from '@material-ui/icons/AttachFile';
-// import LocalOfferIcon from '@material-ui/icons/LocalOffer';
-// import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
-// import InputIcon from '@material-ui/icons/Input';
 
 const color = '#6cdbeb';
 const size = '2rem';
@@ -27,12 +21,6 @@ export const SidebarData = [
     title: 'File',
     icon: <FaFileUpload color={color} fontSize={size} />,
     link: '/file',
-  },
-  {
-    id: 3,
-    title: 'Pricing',
-    icon: <ImPriceTag color={color} fontSize={size} />,
-    link: '/pricing',
   },
   {
     id: 4,

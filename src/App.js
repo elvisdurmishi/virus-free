@@ -8,7 +8,6 @@ import Circles from './Components/Circles';
 // Pages
 import Home from './pages/Home';
 import File from './pages/File';
-import Pricing from './pages/Pricing';
 import AboutUs from './pages/AboutUs';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -26,7 +25,6 @@ function App() {
               <Route path="/virus-free" exact component={Home} />
               <Route path="/home" exact component={Home} />
               <Route path="/file" component={File} />
-              <Route path="/pricing" component={Pricing} />
               <Route path="/about-us" component={AboutUs} />
               <Route path="/sign-in" component={Login} />
               <Route path="/sign-up" component={Signup} />

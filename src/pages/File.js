@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { FaSearch } from 'react-icons/fa';
+import { FaRegCheckCircle, FaRegQuestionCircle } from 'react-icons/fa';
 import '../App.css';
+import axios from 'axios';
+import ProgressBar from './progress/ProgressBar';
 
 export default class File extends Component {
   constructor() {
@@ -9,32 +11,110 @@ export default class File extends Component {
       value: '',
       stats: null,
       engine: [],
-      result: 'Not yet gotten',
+      result: 'Analyze suspicious Files to detect types of malware.',
       loading: true,
     };
-    this.handleChange = this.handleChange.bind(this);
   }
+
+  handleErrors(response) {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+    return response;
+  }
+  handleImageUpload = (event) => {
+    event.preventDefault();
+    this.setState({
+      loading: true,
+      harmelss: null,
+      malicious: null,
+      engine: null,
+      result: 'Loading results...',
+    });
+    const files = event.target.files;
+    const formData = new FormData();
+    formData.append('myFile', files[0]);
+    axios.post('http://localhost:5000/upload', formData).then((response) => {
+      this.setState({
+        harmless: response.data.total,
+        malicious: response.data.positives,
+        engine: Object.keys(response.data.scans),
+        result: response.data.scans,
+        loading: false,
+      });
+    });
+  };
+
   render() {
     return (
       <div>
         <div className="status">
           <h1>File Scan</h1>
+          {this.state.loading || !this.state.result ? (
+            <div className="empty-display"></div>
+          ) : (
+            [
+              <ProgressBar
+                key={12214124124}
+                malicious={this.state.malicious}
+                scans={this.state.harmless}
+                size={100}
+                strokeWidth={10}
+                circleTwoStroke="red"
+              />,
+            ]
+          )}
         </div>
         <div className="cards">
           <div className="card">
-            <div className="card-info">
-              <h2>File Scan</h2>
-              <div className="input-container">
-                <input className="input-box" type="text" />
-                <a href="www.google.com">
-                  <FaSearch color="#fff" fontSize="1rem" />
-                  <i className="fas search-icon fa-search"></i>
-                </a>
+            <div className="card-info file-info-card">
+              <div className="input-container column">
+                <h2>File Scan</h2>
+                <label className="file-label">
+                  <input
+                    type="file"
+                    className="file"
+                    aria-label="File browser example"
+                    onChange={this.handleImageUpload}
+                  />
+                  <span className="file-custom"></span>
+                </label>
               </div>
-              <p>
-                Analyze suspicious files to detect types of malware
-                automatically share them with the security community
-              </p>
+              <table>
+                <tbody>
+                  {this.state.loading || !this.state.result ? (
+                    <tr>
+                      <td>
+                        <p>{this.state.result}</p>
+                      </td>
+                    </tr>
+                  ) : (
+                    [
+                      this.state.engine.map(
+                        (engine, key, bodykey, key2, key3, key5) => (
+                          <tr key={key}>
+                            <td key={key2}>{this.state.engine[key]}</td>
+                            <td key={key3}>
+                              {this.state.result[engine].detected === false ? (
+                                <div key={key5} className="result">
+                                  <FaRegCheckCircle color="#00FF00"></FaRegCheckCircle>
+                                  <p>Clean</p>
+                                </div>
+                              ) : (
+                                <div className="result">
+                                  <FaRegQuestionCircle color="red"></FaRegQuestionCircle>
+                                  <p>Suspicious</p>
+                                </div>
+                              )}
+                            </td>
+                            {this.state.loading}
+                          </tr>
+                        )
+                      ),
+                    ]
+                  )}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
