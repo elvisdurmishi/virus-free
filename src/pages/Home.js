@@ -53,6 +53,7 @@ export default class Home extends Component {
       .then(this.handleErrors)
       .then((response) => response.json())
       .then((json) => {
+        console.log(json);
         this.setState({
           harmless: json.data.attributes.last_analysis_stats.harmless,
           malicious: json.data.attributes.last_analysis_stats.malicious,

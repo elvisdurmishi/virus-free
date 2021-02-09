@@ -81,6 +81,18 @@ export default class File extends Component {
                 </label>
               </div>
               <table>
+                {this.state.loading ? (
+                  <thead></thead>
+                ) : (
+                  <thead>
+                    <tr>
+                      <th>Engine</th>
+                      <th>Result</th>
+                      <th>Severity</th>
+                    </tr>
+                  </thead>
+                )}
+
                 <tbody>
                   {this.state.loading || !this.state.result ? (
                     <tr>
@@ -94,6 +106,9 @@ export default class File extends Component {
                         (engine, key, bodykey, key2, key3, key5) => (
                           <tr key={key}>
                             <td key={key2}>{this.state.engine[key]}</td>
+                            <td key={bodykey}>
+                              {this.state.result[engine].result}
+                            </td>
                             <td key={key3}>
                               {this.state.result[engine].detected === false ? (
                                 <div key={key5} className="result">

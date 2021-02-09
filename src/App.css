@@ -50,7 +50,7 @@ main {
 .glass {
   background: white;
   min-height: 80vh;
-  width: 60%;
+  width: 70%;
   background: linear-gradient(
     to right bottom,
     rgba(255, 255, 255, 0.7),
@@ -404,9 +404,9 @@ table {
   border-radius: 10px;
   padding: 10px;
   overflow-y: scroll;
-  height: 400px;
+  height: 390px;
   display: block;
-  width: 530px;
+  width: 630px;
   border-collapse: collapse;
   text-align: left;
 }
@@ -418,6 +418,10 @@ tbody {
 tr:nth-child(even) {
   background-color: #f0f0f0;
   color: black;
+}
+
+th {
+  margin: 0 10px;
 }
 
 tr {
