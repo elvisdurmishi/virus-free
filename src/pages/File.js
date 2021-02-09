@@ -34,15 +34,23 @@ export default class File extends Component {
     const files = event.target.files;
     const formData = new FormData();
     formData.append('myFile', files[0]);
-    axios.post('http://localhost:5000/upload', formData).then((response) => {
-      this.setState({
-        harmless: response.data.total,
-        malicious: response.data.positives,
-        engine: Object.keys(response.data.scans),
-        result: response.data.scans,
-        loading: false,
+    axios
+      .post('http://localhost:5000/upload', formData)
+      .then((response) => {
+        this.setState({
+          source: response.data.resource,
+          harmless: response.data.total,
+          malicious: response.data.positives,
+          engine: Object.keys(response.data.scans),
+          result: response.data.scans,
+          loading: false,
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          result: 'Please reload the page and try again!',
+        });
       });
-    });
   };
 
   render() {
