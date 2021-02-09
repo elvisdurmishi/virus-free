@@ -9,6 +9,9 @@ In the project directory, you should run:
 ### `npm install`
 
 This installs all the requrired dependencies to make this app run.
+
+## Install file-api for the backend
+
 You should also get the [https://github.com/elvisdurmishi/file-api](file-api) so the backend of the application can work.
 
 In the file-api project directory you should run:
@@ -20,6 +23,8 @@ Then run:
 ### `npm start`
 
 So the backend api can run on the background.
+
+## Start the react app
 
 Next in the virus-free project directory you can run:
 
