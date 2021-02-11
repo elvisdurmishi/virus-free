@@ -35,7 +35,7 @@ export default class File extends Component {
     const formData = new FormData();
     formData.append('myFile', files[0]);
     axios
-      .post('http://localhost:5000/upload', formData)
+      .post('https://cryptic-dusk-71131.herokuapp.com/upload', formData)
       .then((response) => {
         this.setState({
           source: response.data.resource,

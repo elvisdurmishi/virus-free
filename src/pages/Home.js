@@ -42,7 +42,9 @@ export default class Home extends Component {
     var encrypted = btoa(this.state.value);
     var base64value = encrypted.replace('=', '');
     var finalValue = base64value.replace('=', '');
-    const url = 'https://www.virustotal.com/api/v3/urls/' + finalValue;
+    const url =
+      'https://cors-anywhere.herokuapp.com/https://www.virustotal.com/api/v3/urls/' +
+      finalValue;
     fetch(url, {
       method: 'GET',
       headers: {
@@ -53,7 +55,6 @@ export default class Home extends Component {
       .then(this.handleErrors)
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
         this.setState({
           harmless: json.data.attributes.last_analysis_stats.harmless,
           malicious: json.data.attributes.last_analysis_stats.malicious,
