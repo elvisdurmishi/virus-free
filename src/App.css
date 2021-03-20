@@ -243,6 +243,8 @@ input {
 
 .card {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   background: linear-gradient(to right top, #65dfc9, #6cdbeb);
   border-radius: 1rem;
   margin: 2rem 0rem 0rem 0rem;
@@ -371,7 +373,7 @@ table {
   overflow-y: scroll;
   height: 390px;
   display: block;
-  width: 630px;
+  width: 100%;
   border-collapse: collapse;
   text-align: left;
 }

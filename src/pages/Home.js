@@ -84,60 +84,58 @@ export default class Home extends Component {
         </div>
         <div className="cards">
           <div className="card">
-            <div className="card-info file-info-card">
-              <h2>Url Scan</h2>
-              <div className="input-container">
-                <input
-                  value={this.state.value}
-                  onChange={this.handleChange}
-                  className="input-box"
-                  type="text"
-                  placeholder="example.com"
-                  size="30"
-                  required
-                />
-                <button type="button" onClick={this.handleButtonClick}>
-                  <FaSearch color="#fff" fontSize="1rem" />
-                </button>
-              </div>
-              <table>
-                <tbody>
-                  {this.state.loading || !this.state.result ? (
-                    <tr>
-                      <td>
-                        <p>{this.state.result}</p>
-                      </td>
-                    </tr>
-                  ) : (
-                    [
-                      this.state.engine.map(
-                        (engine, bodykey, key, key1, key2, key3) => (
-                          <tr key={bodykey}>
-                            <td key={key2}>
-                              {this.state.result[engine].engine_name}
-                            </td>
-                            <td key={key3}>
-                              {this.state.result[engine].result === 'clean' ? (
-                                <div className="result">
-                                  <FaRegCheckCircle color="#00FF00"></FaRegCheckCircle>
-                                  <p>Clean</p>
-                                </div>
-                              ) : (
-                                <div className="result">
-                                  <FaRegQuestionCircle color="red"></FaRegQuestionCircle>
-                                  <p>Suspicious</p>
-                                </div>
-                              )}
-                            </td>
-                            {this.state.loading}
-                          </tr>
-                        )
-                      ),
-                    ]
-                  )}
-                </tbody>
-              </table>
+            <h2>Url Scan</h2>
+            <div className="input-container">
+              <input
+                value={this.state.value}
+                onChange={this.handleChange}
+                className="input-box"
+                type="text"
+                placeholder="example.com"
+                size="30"
+                required
+              />
+              <button type="button" onClick={this.handleButtonClick}>
+                <FaSearch color="#fff" fontSize="1rem" />
+              </button>
             </div>
+            <table>
+              <tbody>
+                {this.state.loading || !this.state.result ? (
+                  <tr>
+                    <td>
+                      <p>{this.state.result}</p>
+                    </td>
+                  </tr>
+                ) : (
+                  [
+                    this.state.engine.map(
+                      (engine, bodykey, key, key1, key2, key3) => (
+                        <tr key={bodykey}>
+                          <td key={key2}>
+                            {this.state.result[engine].engine_name}
+                          </td>
+                          <td key={key3}>
+                            {this.state.result[engine].result === 'clean' ? (
+                              <div className="result">
+                                <FaRegCheckCircle color="#00FF00"></FaRegCheckCircle>
+                                <p>Clean</p>
+                              </div>
+                            ) : (
+                              <div className="result">
+                                <FaRegQuestionCircle color="red"></FaRegQuestionCircle>
+                                <p>Suspicious</p>
+                              </div>
+                            )}
+                          </td>
+                          {this.state.loading}
+                        </tr>
+                      )
+                    ),
+                  ]
+                )}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
