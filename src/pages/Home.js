@@ -39,18 +39,10 @@ export default class Home extends Component {
       engine: null,
       result: 'Loading results...',
     });
-    var encrypted = btoa(this.state.value);
-    var base64value = encrypted.replace('=', '');
-    var finalValue = base64value.replace('=', '');
-    const url =
-      'https://cors-anywhere.herokuapp.com/https://www.virustotal.com/api/v3/urls/' +
-      finalValue;
+    var website = this.state.value;
+    const url = 'https://cryptic-dusk-71131.herokuapp.com/url/' + website;
     fetch(url, {
-      method: 'GET',
-      headers: {
-        'x-apikey': process.env.REACT_APP_VIRUS_TOTAL_KEY,
-      },
-      mode: 'cors',
+      method: 'POST',
     })
       .then(this.handleErrors)
       .then((response) => response.json())
