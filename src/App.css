@@ -10,22 +10,22 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-h1 {
+h1,
+h2,
+h3,
+h4 {
   color: #426696;
   font-weight: 600;
-  font-size: 3rem;
-  opacity: 0.8;
-}
-h2,
-p {
-  color: #658ec6;
-  font-weight: 500;
   opacity: 0.8;
 }
 
-h3 {
-  color: #426696;
-  font-weight: 600;
+h1 {
+  font-size: 3rem;
+}
+
+p {
+  color: #658ec6;
+  font-weight: 500;
   opacity: 0.8;
 }
 
@@ -36,6 +36,12 @@ hr {
   width: 90%;
   margin: 10px auto;
   color: #fff;
+}
+
+a::before,
+a::after,
+a {
+  text-decoration: none;
 }
 
 main {
@@ -253,10 +259,29 @@ input {
   justify-content: space-between;
 }
 
+.profile {
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
 .card-info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.card-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 
 .file-info-card {
@@ -276,9 +301,30 @@ input {
   text-align: center;
 }
 
+.card-title {
+  font-weight: 600;
+}
+
+.card-subtitle {
+  font-size: 1rem;
+}
+
 .card-footer {
   font-size: 1.5rem;
   color: #426696;
+}
+
+.socials {
+  display: flex;
+  padding: 1rem;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.social-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .small-title {
