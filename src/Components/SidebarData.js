@@ -22,18 +22,6 @@ export const SidebarData = [
     icon: <FaFileUpload color={color} fontSize={size} />,
     link: '/file',
   },
-  {
-    id: 4,
-    title: 'About Us',
-    icon: <FaAddressCard color={color} fontSize={size} />,
-    link: '/about-us',
-  },
-  {
-    id: 5,
-    title: 'Sign In',
-    icon: <FaSignInAlt color={color} fontSize={size} />,
-    link: '/sign-in',
-  },
 ];
 
 export default SidebarData;
