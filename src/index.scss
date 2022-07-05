@@ -1,0 +1,125 @@
+$gray-color: #EFEFEF;
+$gray-text: #A7A7A7;
+$gray-blue: #DFF6FF;
+$main-blue: #1363DF;
+$secondary-blue: #47B5FF;
+$dark-blue: #06283D;
+
+
+.tab-switch {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0;
+    background-color: $gray-color;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    .tab {
+        list-style-type: none;
+        margin: 0;
+        padding: 1rem 2rem;
+        border-bottom: 5px solid transparent;
+        width: 100%;
+        font-weight: bold;
+        transition: all 0.3s ease-in-out;
+        &.active {
+            border-bottom: 5px solid $main-blue;
+        }
+    }
+
+    .tab:hover {
+        color: $main-blue;
+        cursor: pointer;
+        border-bottom: 5px solid $main-blue;
+    }
+}
+
+.bg-tab-gray {
+    background-color: $gray-color;
+}
+
+.file {
+    visibility: hidden;
+    width: 100px;
+}
+
+.file-label {
+    &:before {
+        content: 'Choose File';
+        display: block;
+        background-color: #fff;
+        border: 2px solid $secondary-blue;
+        color: $main-blue;
+        border-radius: 5px;
+        padding: 10px 20px;
+        outline: none;
+        white-space: nowrap;
+        cursor: pointer;
+        text-align: center;
+        font-size: 1rem;
+        width: 150px;
+    }
+
+    &:hover:before, &:active:before{
+        border-color: $main-blue;
+        color: $main-blue;
+    }
+}
+
+.nav-links {
+    margin-bottom: 0;
+
+    .nav-link {
+        font-weight: bold;
+        border-bottom: 2px solid transparent;
+
+        &.active {
+            color: $main-blue;
+            border-bottom: 2px solid $main-blue;
+        }
+
+        &:hover {
+            cursor: pointer;
+            color: $main-blue;
+        }
+    }
+}
+
+.form-input {
+    border: 1px solid $gray-color;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    outline: none;
+}
+
+
+.detection-rows {
+    height: 1600px;
+}
+
+.gap-1 {
+    gap: 0.5rem;
+}
+
+.gap-2 {
+    gap: 1rem;
+}
+
+.gap-3 {
+    gap: 1.5rem;
+}
+
+.gap-4 {
+    gap: 2rem;
+}
+
+.gap-5 {
+    gap: 2.5rem;
+}
+
+.text-gray {
+    color: $gray-text;
+}
+
+.break-word {
+    word-break: break-all;
+}
