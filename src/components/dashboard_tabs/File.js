@@ -1,100 +1,123 @@
 import Thumb from "../../assets/thumbprint.png";
-import {config} from "../../config";
-import axios from "axios";
 import {useRef, useState} from "react";
 import HorizontalProgressBar from "../common/HorizontalProgressBar";
 import {useNavigate} from "react-router-dom";
+import Loader from "../common/Loader";
+import {postRequest} from "../../utility/utilityFunctions";
 
 function File({setAnalysis}) {
-    const API_URL = config.api_url;
     const ref = useRef();
     const navigate = useNavigate();
     const [completed, setCompleted] = useState(0);
     const [analysing, setAnalysing] = useState(false);
+    const [status, setStatus] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
 
     const handleImageUpload = (e) => {
         e.preventDefault();
         let files = e.target.files;
+
+        if (!files) {
+            setError('Please provide a valid file!');
+        }
+
         const formData = new FormData();
         formData.append('file', files[0]);
+        setError('');
+        setAnalysing(true);
+        setLoading(true);
+        setStatus('Uploading');
+        setCompleted(0);
 
-        axios.post(`${API_URL}/upload`, formData)
-            .then((res) => {
-                setAnalysing(true);
-                setCompleted(15);
+        postRequest('/upload', formData, ((res) => {
+            setCompleted(15);
+            setStatus('Analysing');
 
-                let result = analyseFileId(res.data.id);
-
-                while (result === "queued") {
-                    result = analyseFileId(res.data.id);
-                }
-            })
-            .catch((error) => {
-                console.log("error", error);
-            });
+            analyseFileId(res.data.id);
+        }), (() => {
+            handleErrorResponse();
+        }))
 
         ref.current.value = "";
     }
 
-    const analyseFileId = (fileId) => {
+    const analyseFileId = (fileId, attempts = 0) => {
         const data = {
             file_id: fileId
         }
 
-        let returnValue = "";
+        setCompleted((prevState) => prevState < 94 ? prevState + 10 : prevState);
+        attempts = attempts + 1;
 
-        axios.post(`${API_URL}/file/analyse`, data)
-            .then((res) => {
-                if(res.data.status === "queued") {
-                    setCompleted(completed < 94 ? completed + 5 : completed);
-                    returnValue = res.data.status;
-                    return res.data.status;
-                }
+        postRequest('/file/analyse', data, ((res) => {
+            handleFileAnalyseSuccess(res, fileId, attempts);
+        }), (() => {
+            handleErrorResponse();
+        }))
+    }
 
-                setAnalysis(res.data);
-                navigate("/analysis/detection", res.data);
-            })
-            .catch((error) => {
-                console.log("error", error);
-            });
+    const handleFileAnalyseSuccess = (res, fileId, attempts) => {
+        if (res?.data?.attributes?.status === "queued" && attempts <= 10) {
+            setTimeout(() => {
+                analyseFileId(fileId, attempts);
+            }, 3000)
 
-        return returnValue;
+            return;
+        }
+
+        if (attempts > 10 && res?.data?.attributes?.status === "queued") {
+            setAnalysing(false);
+            setLoading(false);
+            setError("The server took too long to respond! Please try again later.");
+
+            return;
+        }
+
+        setAnalysing(false);
+        setLoading(false);
+        setAnalysis(res.data);
+        navigate("/analysis/detection", res.data);
+    }
+
+    const handleErrorResponse = () => {
+        setAnalysing(false);
+        setLoading(false);
+        setStatus('');
+        setError("There was a problem with the server! Please try again later.");
     }
 
     const renderInputButtons = () => {
-        return (
-            <>
-                <img src={Thumb} width={"100"} alt={"thumb analyse"}/>
+        return (<>
+            <img src={Thumb} width={"100"} alt={"thumb analyse"}/>
 
-                <label className="file-label">
-                    <input
-                        ref={ref}
-                        type="file"
-                        className="file"
-                        aria-label="File browser example"
-                        onChange={handleImageUpload}
-                    />
-                    <span className="file-custom"></span>
-                </label>
-            </>
-        )
+            <label className="file-label">
+                <input
+                    ref={ref}
+                    type="file"
+                    className="file"
+                    aria-label="File browser example"
+                    onChange={handleImageUpload}
+                />
+                <span className="file-custom"></span>
+            </label>
+        </>)
     }
 
     const renderProgressBar = () => {
-        return(
-            <>
-                <HorizontalProgressBar completed={completed}/>
-            </>
-        )
+        return (<>
+            <HorizontalProgressBar completed={completed} status={status}/>
+        </>)
     }
 
-    return (
-        <div className={"row p-3"}>
-            <div className={"col-lg-6 mx-auto d-flex flex-column justify-content-center align-items-center gap-3"}>
-                {analysing ? renderProgressBar() : renderInputButtons()}
-            </div>
+    return (<div className={"row p-3 position-relative justify-content-center"}>
+        {loading && <Loader/>}
+        <div className={"col-lg-6 mx-auto d-flex flex-column justify-content-center align-items-center gap-3"}>
+            {analysing ? renderProgressBar() : renderInputButtons()}
+            {!analysing && <span className={"text-gray"}>* The file size should not be larger than 15MB</span>}
         </div>
-    )
+        {error !== "" && (<span className={"text-danger"}>{error}</span>)}
+    </div>)
 }
 
 export default File;

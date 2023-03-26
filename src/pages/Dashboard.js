@@ -8,10 +8,10 @@ function Dashboard() {
     const [type, setType] = useState("");
 
     useEffect(() => {
-        if(location.pathname === "/") {
+        if (location.pathname === "/") {
             navigate("/url");
         }
-    }, [location])
+    }, [location, navigate])
 
     useEffect(() => {
         let type = location.pathname.replace("/", "");
@@ -23,41 +23,39 @@ function Dashboard() {
         navigate(`/${type}`);
     }
 
-    return (
-        <div>
-            <div className={"container"}>
-                <div className={"header d-flex flex-column justify-content-center align-items-center"}>
-                    <img className={"img-fluid d-none d-lg-block"} src={LogoFull} width={500} height={200} alt={"virus free"}/>
-                    <p>Analyze suspicious files and domains to detect malware and other breaches.</p>
-                </div>
+    return (<div>
+        <div className={"container"}>
+            <div className={"header d-flex flex-column justify-content-center align-items-center"}>
+                <img className={"img-fluid"} src={LogoFull} width={500} height={200}
+                     alt={"virus free"}/>
             </div>
-            <div className={"container"}>
-                <div className={"row"}>
-                    <div className={"col-lg-12"}>
-                        <div className={"col-lg-10 mx-auto"}>
-                            <ul className={"tab-switch"}>
-                                <li className={`tab ${type === "url" ? 'active' : ''}`} onClick={() => {
-                                    handleTypeChange("url");
-                                }}>URL
-                                </li>
-                                <li className={`tab ${type === "file" ? 'active' : ''}`} onClick={() => {
-                                    handleTypeChange("file");
-                                }}>FILE
-                                </li>
-                            </ul>
-                        </div>
+        </div>
+        <div className={"container"}>
+            <div className={"row"}>
+                <div className={"col-lg-12"}>
+                    <div className={"col-lg-10 mx-auto"}>
+                        <ul className={"tab-switch"}>
+                            <li className={`tab text-center ${type === "url" ? 'active' : ''}`} onClick={() => {
+                                handleTypeChange("url");
+                            }}>URL
+                            </li>
+                            <li className={`tab text-center ${type === "file" ? 'active' : ''}`} onClick={() => {
+                                handleTypeChange("file");
+                            }}>FILE
+                            </li>
+                        </ul>
                     </div>
-                    <div className={"col-lg-12"}>
-                        <div className={"col-lg-10 mx-auto"}>
-                            <div className={"bg-tab-gray"}>
-                                <Outlet/>
-                            </div>
+                </div>
+                <div className={"col-lg-12"}>
+                    <div className={"col-lg-10 mx-auto"}>
+                        <div className={"p-5"}>
+                            <Outlet/>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    </div>)
 }
 
 export default Dashboard
