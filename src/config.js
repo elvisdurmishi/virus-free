@@ -1,3 +1,3 @@
 export const config = {
-    api_url: "https://virus-free-backend.herokuapp.com"
+    api_url: "https://virusfree.up.railway.app"
 }
