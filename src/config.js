@@ -1,3 +1,3 @@
 export const config = {
-    api_url: "https://64.226.104.181/virus-free"
+    api_url: "https://codebyelvis.com/virus-free"
 }
