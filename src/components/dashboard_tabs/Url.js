@@ -30,7 +30,7 @@ function Url({setAnalysis}) {
             navigate("/analysis/detection", res.data);
         }), ((error) => {
             setLoading(false);
-            setError(error?.response?.data?.message ?? "There was an error with the server!");
+            setError(error?.response?.data?.error ?? "There was an error with the server!");
         }))
     }
 

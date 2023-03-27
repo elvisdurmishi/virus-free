@@ -35,8 +35,8 @@ function File({setAnalysis}) {
             setStatus('Analysing');
 
             analyseFileId(res.data.id);
-        }), (() => {
-            handleErrorResponse();
+        }), ((error) => {
+            handleErrorResponse(error);
         }))
 
         ref.current.value = "";
@@ -80,11 +80,11 @@ function File({setAnalysis}) {
         navigate("/analysis/detection", res.data);
     }
 
-    const handleErrorResponse = () => {
+    const handleErrorResponse = (error) => {
         setAnalysing(false);
         setLoading(false);
         setStatus('');
-        setError("There was a problem with the server! Please try again later.");
+        setError(error?.response?.data?.error ?? "There was a problem with the server! Please try again later.");
     }
 
     const renderInputButtons = () => {
@@ -114,9 +114,9 @@ function File({setAnalysis}) {
         {loading && <Loader/>}
         <div className={"col-lg-6 mx-auto d-flex flex-column justify-content-center align-items-center gap-3"}>
             {analysing ? renderProgressBar() : renderInputButtons()}
+            {!analysing && error !== "" && (<span className={"text-danger"}>{error}</span>)}
             {!analysing && <span className={"text-gray"}>* The file size should not be larger than 15MB</span>}
         </div>
-        {error !== "" && (<span className={"text-danger"}>{error}</span>)}
     </div>)
 }
 
