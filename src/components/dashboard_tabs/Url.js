@@ -28,9 +28,9 @@ function Url({setAnalysis}) {
             setLoading(false);
             setAnalysis(res.data);
             navigate("/analysis/detection", res.data);
-        }), (() => {
+        }), ((error) => {
             setLoading(false);
-            setError("There was a problem with the server! Please try again later.");
+            setError(error?.message + " " + error?.code);
         }))
     }
 
