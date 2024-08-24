@@ -43,7 +43,6 @@ function Url({setAnalysis}) {
                 <div className={"domain-input mb-4"}>
                     <input className={"form-input"} type={"text"} placeholder={"Domain, url..."}
                            value={url}
-                           pattern={"[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"}
                            onChange={(e) => setUrl(e.target.value)}
                     />
                     <button type={"submit"}><i className="fa fa-search"/></button>
